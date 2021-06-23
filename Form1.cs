@@ -27,7 +27,8 @@ namespace oturumuaçıktutma
         {
             foreach (IPAddress IP in Dns.GetHostAddresses(Dns.GetHostName()))
             {
-                ip = IP.ToString();
+                ip = IP.ToString(); // foreach döngüsü ile ip imizi aldık. Kodun türkçesi şu şekildedir : IP değişkeni "Dns.GetHostAddresses(Dns.GetHostName())" kısmından veri
+                //aldığı sürece bu veriyi ip değişkenine string değerinde atasın.
             }
         }
 
@@ -43,11 +44,11 @@ namespace oturumuaçıktutma
 
             while (dr.Read())
             {
-                if (dr[4].ToString() == "true")
+                if (dr[4].ToString() == "true") //dr nin 4.indexindeki değer true ise aşağıdaki işlemleri yap dedik
                 {
 
-                    this.TopMost = false;
-                    checkBox1.Checked = true;
+                    this.TopMost = false; // bu kod bu formun üstte mi yoksa altta mı yer alcağını belirlememizi sağlar. False ise altta True ise üstte yer alır
+                    checkBox1.Checked = true; 
 
                     timer1.Start();
 
@@ -114,12 +115,12 @@ namespace oturumuaçıktutma
 
             if (checkBox1.Checked)
             {
-                com.Parameters.AddWithValue("@DURUM", "true");
+                com.Parameters.AddWithValue("@DURUM", "true"); // durum güncellemesi yaparken eğer ki checkBox true ise yani seçili ise veritabanındaki değerinide true yap dedik
             }
 
             else
             {
-                com.Parameters.AddWithValue("@DURUM", "false");
+                com.Parameters.AddWithValue("@DURUM", "false"); // durum güncellemesi yaparken eğer ki checkBox false ise yani seçili değil ise veritabanındaki değerinide false yap dedik
             }
             
 
@@ -164,6 +165,8 @@ namespace oturumuaçıktutma
                 timer1.Stop();
 
                 this.Hide();
+                
+                // timer çalıştığı sürece süre değişkenini azaltcak ve eğer ki süre 0 olursa timer ı durdurup bu formu gizlicek
             }
         }
     }
